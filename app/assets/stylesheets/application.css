@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ /* 以下の設定をすることで、paddingやborderの設定を行っても、 */
+ /* 要素の大きさがwidthやheightで指定したサイズのまま変わらなくなります。 */
+ * {
+  box-sizing: border-box;
+}
