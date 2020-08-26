@@ -1,0 +1,15 @@
+.pagination {
+  display: flex;
+  list-style: none;
+}
+.pagination li{
+  border: 1px solid;
+  font-size: large;
+  margin:10px 15px;
+  padding:10px 15px;
+}
+
+.pagination li:hover{
+  transform:scale(1.0, 1.7);
+  background-color:aqua;
+}
