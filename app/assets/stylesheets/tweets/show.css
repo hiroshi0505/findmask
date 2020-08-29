@@ -1,0 +1,15 @@
+.submit {
+  display: none;
+  padding: 20px;
+}
+
+.dammy {
+  background-color: white;
+  padding: 20px;
+}
+
+.comment {
+  margin:10px;
+  border: 1px solid;
+  background-color: aqua;
+}
