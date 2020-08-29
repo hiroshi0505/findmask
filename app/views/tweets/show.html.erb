@@ -1,4 +1,10 @@
 <div class="contents row">
+
+  <%# jsで使う"id"を取得する為に、input type="hidden(非表示の入力タブ)を使い
+  idとvalueを設定する.この書き方が定規だから覚える %>
+  <input type="hidden" id="tweet_id" value=<%= @tweet.id%>>
+  <input type="hidden" id="tweet_nickname" value=<%= current_user.nickname %>>
+
   <%= image_tag @tweet.image.variant(resize:'500x500'), class: 'tweet-image' if @tweet.image.attached? %>
     <% if user_signed_in? && current_user.id == @tweet.user_id %>
       <div class="more">
@@ -22,9 +28,10 @@
   </div>
   <div class="container">
     <% if current_user %>
-      <%= form_with(model: [@tweet, @comment], local: true) do |form| %>
-        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
-        <%= form.submit "SEND" %>
+      <%= form_with(model: [@tweet, @comment],  method: :post, id: "form", local: true) do |form| %>
+        <%= form.text_area :text, placeholder: "コメントする", rows: "2", id: "text" %>
+        <%= form.submit "SEND", id:"submit", class:"submit" %>
+        <div><input type="button" value="SEND" id="btn" class="dammy"></div>
       <% end %>
     <% else %>
       <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p>
@@ -32,12 +39,17 @@
     <% end %>
     <div class="comments">
       <h4>＜コメント一覧＞</h4>
+      <div id="list">
+      </div>
       <% if @comments %>
-        <% @comments.each do |comment| %>
-          <p>
-            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
-            <%= comment.text %>
-          </p>
+        <% @comments.reverse.each do |comment| %>
+          <input type="hidden" id="now_time" value=<%= comment.created_at.strftime('%Y/%m/%d') %>>
+            <%# <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>
+            <div class="comment">
+              <div><%= comment.user.nickname %>さん</div>
+             「<%= comment.text %>」
+              <%= comment.created_at.strftime('%Y/%m/%d') %>
+            </div>
         <% end %>
       <% end %>
     </div>
