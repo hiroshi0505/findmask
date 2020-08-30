@@ -1,11 +1,55 @@
+.show-contents{
+  display: flex;
+}
+.show-content-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.more {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  padding: 10px 70px;
+  border: 1px solid;
+}
+
+.tweet-text {
+  border:1px solid;
+  display:flex;
+  justify-content: center;
+}
+
+.name {
+  border: 1px solid;
+  display:flex;
+  justify-content: center;
+}
+
+.show-content-right {
+  border: 1px solid;
+}
+
+form {
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+textarea {
+  height: 100px;
+  width: 300px;
+}
+
 .submit {
   display: none;
-  padding: 20px;
+  padding: 20px 50px;
 }
 
 .dammy {
   background-color: white;
-  padding: 20px;
+  padding: 20px 50px;
 }
 
 .comment {

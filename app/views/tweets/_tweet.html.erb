@@ -1,24 +1,27 @@
-<%= image_tag tweet.image.variant(resize:'500x500'), class: 'tweet-image' if tweet.image.attached? %>
-      <div class="more">
-        <span><%= image_tag 'arrow_top.png' %></span>
-        <ul class="more_list">
-          <li>
-            <%= link_to '詳細', tweet_path(tweet.id), method: :get %>
-          </li>
-          <% if user_signed_in? && current_user.id == tweet.user_id %>
-            <li>
-              <%= link_to '編集', edit_tweet_path(tweet.id), method: :get %>
-            </li>
-            <li>
-              <%= link_to '削除', tweet_path(tweet.id), method: :delete %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-      <p><%= tweet.text %></p>
-      <span class="name">
-        <a href="/users/<%= tweet.user.id %>">
-          <span>投稿者</span><%= tweet.user.nickname %>
-        </a>
-      </span>
+<div class="content">
+  <div class="left-side">
+    <div>
+    <%= link_to '＜詳細＞', tweet_path(tweet.id), method: :get %>
     </div>
+    <% if user_signed_in? && current_user.id == tweet.user_id %>
+    <div>
+      <%= link_to '＜編集＞', edit_tweet_path(tweet.id), method: :get %>
+    </div>
+    <div>
+      <%= link_to '＜削除＞', tweet_path(tweet.id), method: :delete %>
+    </div>
+    <% end %>
+  </div>
+  <div class="center">
+    <%= image_tag tweet.image.variant(resize:'500x500'), class: 'tweet-image' if tweet.image.attached? %>
+  </div>
+  <div class="right-side">
+    <div>
+      <span>投稿者：</span>
+      <a href="/users/<%= tweet.user.id %>"><%= tweet.user.nickname %></a>さん
+    </div>
+    <div>
+      <span>説明文：</span><%= tweet.text %>
+    </div>
+  </div>
+</div>

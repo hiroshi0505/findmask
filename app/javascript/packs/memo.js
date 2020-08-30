@@ -13,8 +13,8 @@ window.addEventListener("load", function(){
       const nickname = document.getElementById("tweet_nickname");
       const nicknameId = nickname.value;
 
-      const nowTime = document.getElementById("now_time");
-      const time = nowTime.value;
+      // const nowTime = document.getElementById("now_time");
+      // const time = nowTime.value;
     
       const tweet = document.getElementById("tweet_id");
       const tweetId = tweet.value;
@@ -42,7 +42,7 @@ window.addEventListener("load", function(){
       const HTML =`
                 <div class="comment">
                   <div>${nicknameId}さん</div>
-                      「${item.text}」${time}
+                      「${item.text}」
                 </div>
                 `;
       // listという要素に対して、insertAdjacentHTMLでHTMLを追加します。
