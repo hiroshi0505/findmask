@@ -1,0 +1,15 @@
+.container {
+  padding: 10px;
+  border: 1px solid;
+}
+
+.field{
+  background-color:gray;
+  padding: 10px;
+  margin: 10px 10px 10px 0;
+}
+
+input {
+  width: 30vw;
+  padding: 10px;
+}

@@ -1,5 +1,7 @@
 <div class="contents row">
-  <p><%= @nickname %>さんの投稿一覧</p>
+  <div class="scroll">
+    <span><h3><%= @nickname %>さんの投稿一覧</h3></span>
+  </div>
   <%= will_paginate @tweets, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
   <% @tweets.each do |tweet| %>
     <%= render partial: "tweets/tweet", locals: { tweet: tweet } %>

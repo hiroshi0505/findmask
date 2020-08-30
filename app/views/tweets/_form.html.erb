@@ -1,4 +1,6 @@
-<div><%= form.file_field :image, placeholder: "Image Url" %></div>
-<div id="image-list"></div>
-<div><%= form.text_area :text, placeholder: "text", rows: "10" %></div>
-<div><%= form.submit "SEND" %></div>
+<div class="form">
+  <div><%= form.file_field :image, placeholder: "Image Url", class:"image-form" %></div>
+  <div id="image-list"></div>
+  <div><%= form.text_area :text, placeholder: "text", class:"text-area" %></div>
+  <div class="submit-btn"><%= form.submit "SEND" %></div>
+</div>

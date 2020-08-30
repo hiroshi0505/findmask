@@ -1,4 +1,33 @@
-#image-list img {
+.form {
+  background-color: gray;
+  padding:30px;
+}
+
+.image-form{
+  background-color:white;
+  font-size: large;
+  padding: 20px;
+  border: 1px solid;
   width: 33vw;
+}
+
+.text-area {
+  margin:30px 0;
+  font-size: large;
+  padding: 20px;
+  border: 1px solid;
+  width: 33vw;
+  height: 200px;
+}
+
+.submit-btn {
+  background-color:white;
+  font-size: large;
+  padding: 20px;
+  border: 1px solid;
+}
+
+#image-list img {
+  width: 30vw;
   height: auto;
 }
