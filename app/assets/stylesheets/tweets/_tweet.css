@@ -1,0 +1,27 @@
+.content {
+  /* display: flex; */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-side {
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+/* padding: 10px 50px; */
+}
+
+.center {
+  border: 1px solid;
+}
+
+.right-side {
+  margin: auto;
+  padding: auto;
+/* padding: 10px 50px; */
+  border: 1px solid;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

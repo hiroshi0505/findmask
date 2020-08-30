@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  border: 1px solid;
+  margin: 0;
+  padding: 0;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+footer {
+  border: 1px solid;
+  margin: 0;
+  padding: 0;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-image {
+  border: 1px solid;
+  width: 20%;
+}
+
+.logo-image:hover {
+  transform:scale(1.6,1.7);
+}
+
+/* 
+.btn1 {
+  padding: 10px;
+  color: white;
+  background-color: black;
+}
+
+.btn1:hover {
+  color: black;
+  background-color: white;
+} */
