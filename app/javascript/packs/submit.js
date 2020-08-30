@@ -8,14 +8,22 @@ window.addEventListener("input", function(){
   const textValue = text.value;
     // もしtextの文字数が0より大きければ
     if (textValue.length > 0) {
-      // display:none;だったsubmitを出現させ、btnを非表示にさせる
+      // display:none;だったsubmitを出現させ、ダミーを非表示にさせる
       submit.setAttribute("style", "display:block;");
       btn.setAttribute("style", "display:none;");
         // submitボタンをクリックした時のイベント発火
         submit.addEventListener("click", function(){
-          // submitを非表示にセットし、ダミーをblockにセットする
+          // submitをnoneにセットし、ダミーをblockにセットする
           submit.setAttribute("style", "display:none;");
           btn.setAttribute("style", "display:block;");
-        })
+        });
+      // もしtextの文字数が0の場合
+    } else {
+      // submitのdisplay:blockを削除
+      // 右と同意 → submit.setAttribute("style", "display:none;")
+      submit.removeAttribute("style", "display:block;");
+      // ダミーのdisplay:noneを削除
+      // 右と同意 → btn.setAttribute("style", "display:block;");
+      btn.removeAttribute("style", "display:none;");
     };
 });

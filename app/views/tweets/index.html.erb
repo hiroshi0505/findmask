@@ -6,11 +6,10 @@
     <% end %>
   </div>
   <div class="scroll">
-    <span><h3>ここはトップページ</h3></span>
+    <span><h3>トップページ</h3></span>
   </div>
   <%= will_paginate @tweets, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
-    <% @tweets.each do |tweet| %>
-      <%= render partial: "tweet", locals: { tweet: tweet } %>
-    <% end %>
-  </div>
+  <% @tweets.each do |tweet| %>
+    <%= render partial: "tweet", locals: { tweet: tweet } %>
+  <% end %>
 </div>

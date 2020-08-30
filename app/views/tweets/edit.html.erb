@@ -1,4 +1,7 @@
 <div class="contents">
+<div class="scroll">
+    <span><h3>編集ページ</h3></span>
+  </div>
   <%= form_with(model: @tweet, local: true) do |form| %>
     <h3>編集する</h3>
     <%= render partial: "form", locals: { form: form } %>
