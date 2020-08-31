@@ -23,12 +23,12 @@ footer {
   align-items: center;
 }
 
-.logo-image {
+.logo-image1 {
   border: 1px solid;
   width: 20%;
 }
 
-.logo-image:hover {
+.logo-image1:hover {
   transform:scale(1.6,1.7);
 }
 
@@ -44,8 +44,10 @@ footer {
 }
 
 a {
-  /* border: 1px solid; */
-  text-decoration: none;
+  margin:0;
+  padding:0;
+  background-color: gray;
+  border: 1px solid;
 }
 
 /* a:hover {

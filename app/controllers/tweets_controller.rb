@@ -41,6 +41,9 @@ class TweetsController < ApplicationController
     @tweets = Tweet.search(params[:keyword])
   end
 
+  def number
+  end
+
   private
 
   def tweet_params
