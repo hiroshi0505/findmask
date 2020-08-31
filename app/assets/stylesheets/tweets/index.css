@@ -20,6 +20,15 @@
   padding: 5px 50px;
 }
 
+.logo-image2 {
+  border: 1px solid;
+  width: 3%;
+}
+
+.logo-image2:hover {
+  transform:scale(1.6,1.7);
+}
+
 /* スクロール設定 */
 .scroll {
   margin     : auto;
