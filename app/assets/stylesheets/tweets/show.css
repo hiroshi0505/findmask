@@ -1,6 +1,8 @@
 .show-contents{
   display: flex;
+  font-size: large;
 }
+
 .show-content-left {
   display: flex;
   flex-direction: column;
@@ -8,9 +10,7 @@
 
 .more {
   display: flex;
-  /* flex-direction: column; */
-  justify-content: center;
-  padding: 10px 70px;
+  justify-content: space-around;
   border: 1px solid;
 }
 
@@ -34,22 +34,28 @@ form {
   border: 1px solid;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 textarea {
-  height: 100px;
-  width: 300px;
+  font-size: 50px;
+  height: 30vh;
+  width: 30vw;
 }
 
 .submit {
   display: none;
-  padding: 20px 50px;
+  padding: 20px 20px;
 }
 
 .dammy {
   background-color: white;
-  padding: 20px 50px;
+  padding: 20px 20px;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .comment {

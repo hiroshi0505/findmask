@@ -2,55 +2,55 @@
   <div class="scroll">
     <span><h3>投稿内容詳細ページ</h3></span>
   </div>
-<div class="show-contents">
-  <div class="show-content-left">
+  <div class="show-contents">
+    <div class="show-content-left">
 
-  <%# jsで使う"id"を取得する為に、input type="hidden(非表示の入力タブ)を使い
-  idとvalueを設定する.この書き方が定規だから覚える %>
-  <input type="hidden" id="tweet_id" value=<%= @tweet.id%>>
-  <input type="hidden" id="tweet_nickname" value=<%= current_user.nickname %>>
+      <%# jsで使う"id"を取得する為に、input type="hidden(非表示の入力タブ)を使い
+      idとvalueを設定する.この書き方が定規だから覚える %>
+      <input type="hidden" id="tweet_id" value=<%= @tweet.id%>>
+      <input type="hidden" id="tweet_nickname" value=<%= current_user.nickname %>>
 
-  <div>
-    <%= image_tag @tweet.image.variant(resize:'500x500'), class: 'tweet-image' if @tweet.image.attached? %>
-  </div>
-  <% if user_signed_in? && current_user.id == @tweet.user_id %>
-    <div class="more">
-      <div><%= link_to '＜編集＞', edit_tweet_path(@tweet.id), method: :get %></div>
-      <div><%= link_to '＜削除＞', tweet_path(@tweet.id), method: :delete %></div>
-    </div>
-  <% end %>
-  <div class="tweet-text">説明文：
-    <%= @tweet.text %>
-  </div>
-  <div class="name">投稿者：
-    <a href="/users/<%= @tweet.user.id %>"><%= @tweet.user.nickname %>さん</a>
-  </div>
-  </div>
-  <div class="show-content-right">
-    <% if current_user %>
-    <%= form_with(model: [@tweet, @comment], method: :post, id: "form", local: true) do |form| %>
-      <div><%= form.text_area :text, placeholder: "コメントする", id: "text", class:"text" %></div>
-      <div><%= form.submit "SEND", id:"submit", class:"submit" %></div>
-      <div><input type="button" value="SEND" id="btn" class="dammy"></div>
-    <% end %>
-    <% else %>
-      <p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p>
-    <% end %>
-    <div class="comments">
-      <h4>＜コメント一覧＞</h4>
-      <div id="list">
+      <div>
+        <%= image_tag @tweet.image.variant(resize:'500x500'), class: 'tweet-image' if @tweet.image.attached? %>
       </div>
-      <% if @comments %>
-        <% @comments.reverse.each do |comment| %>
-          <%# <input type="hidden" id="now_time" value=<%= comment.created_at.strftime('%Y/%m/%d') %>
-          <div class="comment">
-            <div><%= comment.user.nickname %>さん</div>
-           「<%= comment.text %>」
-            <%# <%= comment.created_at.strftime('%Y/%m/%d') %>
-          </div>
-        <% end %>
+      <% if user_signed_in? && current_user.id == @tweet.user_id %>
+      <div class="more">
+        <div><%= link_to '＜編集＞', edit_tweet_path(@tweet.id), method: :get, class:"post" %></div>
+        <div><%= link_to '＜削除＞', tweet_path(@tweet.id), method: :delete , class:"post" %></div>
+      </div>
       <% end %>
+      <div class="tweet-text">説明文：
+        <%= @tweet.text %>
+      </div>
+      <div class="name">投稿者：
+        <a href="/users/<%= @tweet.user.id %>"><%= @tweet.user.nickname %>さん</a>
+      </div>
+    </div>
+    <div class="show-content-right">
+      <% if current_user %>
+        <%= form_with(model: [@tweet, @comment], method: :post, id: "form", local: true) do |form| %>
+          <div><%= form.text_area :text, placeholder: "コメントを入力して下さい", id: "text", class:"text" %></div>
+          <div><%= form.submit "SEND", id:"submit", class:"submit" %></div>
+          <div><input type="button" value="SEND" id="btn" class="dammy"></div>
+        <% end %>
+      <% else %>
+        <p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p>
+      <% end %>
+      <div class="comments">
+        <h4>＜コメント一覧＞</h4>
+        <div id="list">
+        </div>
+        <% if @comments %>
+          <% @comments.reverse.each do |comment| %>
+            <%# <input type="hidden" id="now_time" value=<%= comment.created_at.strftime('%Y/%m/%d') %>
+            <div class="comment">
+              <div><%= comment.user.nickname %>さん</div>
+             「<%= comment.text %>」
+              <%# <%= comment.created_at.strftime('%Y/%m/%d') %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 </div>

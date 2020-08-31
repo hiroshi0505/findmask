@@ -32,14 +32,24 @@ footer {
   transform:scale(1.6,1.7);
 }
 
-/* 
-.btn1 {
-  padding: 10px;
+.post {
+  color: black;
+  background-color: white;
+}
+
+.post:hover {
+  padding: 5px 0;
   color: white;
   background-color: black;
 }
 
-.btn1:hover {
-  color: black;
-  background-color: white;
+a {
+  /* border: 1px solid; */
+  text-decoration: none;
+}
+
+/* a:hover {
+  padding: 5px 0;
+  color: white;
+  background-color: black;
 } */

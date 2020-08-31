@@ -17,9 +17,9 @@
       <h1 class="center">ここがヘッダー</h1>
         <% if user_signed_in? %>
           <div class="header-right-1">
-            <%= current_user.nickname %>さん
-            <%= link_to "マイページ", "/users/#{current_user.id}" %>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            こんにちは<%= current_user.nickname %>さん
+            <%= link_to "マイページ", "/users/#{current_user.id}", class: "post"%>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "post" %>
             <%= link_to "投稿する", new_tweet_path, class: "post" %>
           </div>
         <% else %>
