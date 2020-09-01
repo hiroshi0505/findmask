@@ -8,30 +8,30 @@
       <%= devise_error_messages! %>
 
       <div class="field">
-        <%= f.label :nickname %> <em>(6 characters maximum)</em><br />
-        <%= f.text_field :nickname, autofocus: true, maxlength: "6" %>
+        <%= f.label :nickname %> <em>(6文字以内)</em><br />
+        <%= f.text_field :nickname, placeholder: "ニックネームを入力して下さい", autofocus: true, maxlength: "6" %>
       </div>
 
       <div class="field">
         <%= f.label :email %><br />
-        <%= f.email_field :email %>
+        <%= f.email_field :email, placeholder: "メールアドレスを入力して下さい" %>
       </div>
 
       <div class="field">
         <%= f.label :password %>
         <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(<%= @minimum_password_length %> 文字以上)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
+        <%= f.password_field :password, placeholder: "パスワードを入力して下さい", autocomplete: "off" %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <%= f.label :password（確認用） %><br />
+        <%= f.password_field :password_confirmation, placeholder: "同じパスワードを入力して下さい", autocomplete: "off" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "新規登録" %>
+        <%= f.submit "新規登録" , data: {confirm: "この内容で登録しますか？"}%>
       </div>
     <% end %>
   </div>
