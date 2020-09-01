@@ -5,20 +5,17 @@
 }
 
 .left-side {
+  padding: 15px 0;
   border: 1px solid;
   display: flex;
   justify-content: space-around;
   font-size: large;
 }
 
-.btn1:hover {
-  padding: 5px 0;
-  color: white;
-  background-color: black;
-}
-
 .center {
   border: 1px solid;
+  display: flex;
+  justify-content: center;
 }
 
 .right-side {
@@ -28,4 +25,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.right-side-nav {
+  font-size: large;
+  /* border: 1px solid; */
+  padding: 10px 0;
+}
+
+.btn1 {
+  border: 1px solid;
+  text-decoration: none;
+  border-radius: 100vh;
+  margin: 0 5px;
+  padding: 10px 10px;
+}
+
+.btn1:hover {
+  background-color:aqua;
 }

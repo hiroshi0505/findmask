@@ -1,23 +1,23 @@
 <div class="contents row">
   <div class="scroll">
-    <span><h2>新規登録</h2></span>
+    <span><h2>全て入力しないと新規登録できません！</h2></span>
   </div>
   <div class="container">
-    <%# <h2>Sign up</h2> %>
+    <h2>Sign up ／ 新規登録</h2>
     <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
       <%= devise_error_messages! %>
 
-      <div class="field">
+      <div class="field">＜必須＞
         <%= f.label :nickname %> <em>(6文字以内)</em><br />
         <%= f.text_field :nickname, placeholder: "ニックネームを入力して下さい", autofocus: true, maxlength: "6" %>
       </div>
 
-      <div class="field">
+      <div class="field">＜必須＞
         <%= f.label :email %><br />
         <%= f.email_field :email, placeholder: "メールアドレスを入力して下さい" %>
       </div>
 
-      <div class="field">
+      <div class="field">＜必須＞
         <%= f.label :password %>
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> 文字以上)</em>
@@ -25,7 +25,7 @@
         <%= f.password_field :password, placeholder: "パスワードを入力して下さい", autocomplete: "off" %>
       </div>
 
-      <div class="field">
+      <div class="field">＜必須＞
         <%= f.label :password（確認用） %><br />
         <%= f.password_field :password_confirmation, placeholder: "同じパスワードを入力して下さい", autocomplete: "off" %>
       </div>

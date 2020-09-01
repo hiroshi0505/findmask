@@ -11,10 +11,10 @@
 
   <body>
     <header>
-      <a href="/"><img src="/assets/findmask-0587f376b7b7e2a090cbe57fd6298b96f9c658fcafc1c19ce49e95ffb580b7d9.png" class="logo-image1"></a>
-      <%# <%= link_to image_tag("findmask.png", class: "logo-image"), "/" %>
-      
-      <h1 class="center">ここがヘッダー</h1>
+      <div class="header-left-1">
+        <%= link_to "投稿一覧ページ", "/", class: "post" %>
+        <%= link_to "学習ページへ", number_tweets_path, class: "post" %>
+      </div>
         <% if user_signed_in? %>
           <div class="header-right-1">
             こんにちは<%= current_user.nickname %>さん

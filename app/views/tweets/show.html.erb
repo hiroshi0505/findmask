@@ -10,8 +10,8 @@
       <input type="hidden" id="tweet_id" value=<%= @tweet.id%>>
       <input type="hidden" id="tweet_nickname" value=<%= current_user.nickname %>>
 
-      <div>
-        <%= image_tag @tweet.image.variant(resize:'500x500'), class: 'tweet-image' if @tweet.image.attached? %>
+      <div class="tweet-image">
+        <%= image_tag @tweet.image.variant(resize:'500x500') if @tweet.image.attached? %>
       </div>
       <% if user_signed_in? && current_user.id == @tweet.user_id %>
       <div class="more">
@@ -23,7 +23,7 @@
         <%= @tweet.text %>
       </div>
       <div class="name">投稿者：
-        <a href="/users/<%= @tweet.user.id %>"><%= @tweet.user.nickname %>さん</a>
+        <a href="/users/<%= @tweet.user.id %>" class="btn1"><%= @tweet.user.nickname %>さん</a>
       </div>
     </div>
     <div class="show-content-right">

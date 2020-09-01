@@ -5,9 +5,8 @@
       <%= form.submit "検索", class: "search-btn" %>
     <% end %>
   </div>
-  <%= link_to image_tag("iOS の画像.jpg", class: "logo-image2"), number_tweets_path %>
   <div class="scroll">
-    <span><h3>トップページ</h3></span>
+    <span><h3>投稿一覧ページ：３投稿づつ閲覧できます</h3></span>
   </div>
   <%= will_paginate @tweets, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
   <% @tweets.each do |tweet| %>

@@ -16,12 +16,12 @@
     <%= image_tag tweet.image.variant(resize:'500x500'), class: 'tweet-image' if tweet.image.attached? %>
   </div>
   <div class="right-side">
-    <div>
+    <div class="right-side-nav">
       <span>投稿者：</span>
-      <a href="/users/<%= tweet.user.id %>"><%= tweet.user.nickname %></a>さん
+      <a href="/users/<%= tweet.user.id %>" class="btn1"><%= tweet.user.nickname %></a>さん
     </div>
-    <div>
-      <span>説明文：</span><%= tweet.text %>
+    <div class="right-side-nav">
+      <span>説明文：</span>「<%= tweet.text %>」
     </div>
   </div>
 </div>

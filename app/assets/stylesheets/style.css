@@ -4,6 +4,7 @@ body {
 }
 
 header {
+  background-color: gainsboro;
   border: 1px solid;
   margin: 0;
   padding: 0;
@@ -14,6 +15,7 @@ header {
 }
 
 footer {
+  background-color: gainsboro;
   border: 1px solid;
   margin: 0;
   padding: 0;
@@ -23,35 +25,15 @@ footer {
   align-items: center;
 }
 
-.logo-image1 {
-  border: 1px solid;
-  width: 20%;
-}
-
-.logo-image1:hover {
-  transform:scale(1.6,1.7);
-}
-
 .post {
-  color: black;
-  background-color: white;
+  border: 1px solid;
+  text-decoration: none;
+  border-radius: 100vh;
+  margin: 0 5px;
+  padding: 10px 10px;
 }
 
 .post:hover {
-  padding: 5px 0;
-  color: white;
-  background-color: black;
+  /* transform: scale(1.0, 1.7); */
+  background-color: aqua;
 }
-
-a {
-  margin:0;
-  padding:0;
-  background-color: gray;
-  border: 1px solid;
-}
-
-/* a:hover {
-  padding: 5px 0;
-  color: white;
-  background-color: black;
-} */

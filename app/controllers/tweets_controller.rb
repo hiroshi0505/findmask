@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
 
   # includesメソッドを使用するとすべてのレコードを取得するため、allメソッドは省略可能
   def index
-    @tweets = Tweet.includes(:user).paginate(page: params[:page], per_page: 2).order('created_at DESC') # ASC（昇順）
+    @tweets = Tweet.includes(:user).paginate(page: params[:page], per_page: 3).order('created_at DESC') # ASC（昇順）
   end
 
   # Tweetクラスのインスタンス変数を生成します。
@@ -13,8 +13,12 @@ class TweetsController < ApplicationController
   end
 
   def create
-    Tweet.create(tweet_params)
-    redirect_to action: :index
+    @tweet = Tweet.create(tweet_params)
+    if @tweet.save
+      redirect_to action: :index
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -29,7 +33,7 @@ class TweetsController < ApplicationController
   def update
     tweet = Tweet.find(params[:id])
     tweet.update(tweet_params)
-    redirect_to action: :index
+    redirect_to action: :show
   end
 
   def show

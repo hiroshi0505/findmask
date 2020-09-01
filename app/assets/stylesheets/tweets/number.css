@@ -1,18 +1,15 @@
 .logo1 {
-  border: 1px solid;
-  margin: 50px 20px 0;
+  /* border: 1px solid; */
 }
 
 .logo2 {
-  border: 1px solid;
-  margin: 50px 20px 0;
-  padding:30px;
+  /* border: 1px solid; */
+  padding:40px;
 }
 
 .logo3 {
-  border: 1px solid;
-  margin: 50px 50px 0;
-  padding: 70px;
+  /* border: 1px solid; */
+  padding: 80px;
 }
 
 .number-contents{
@@ -23,18 +20,30 @@
 .number-content{
   border: 1px solid;
   width: 22%;
-  display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
+}
+.number-content-text{
+  text-align: center;
 }
 
 .nav-lists{
-  position: fixed;
-  margin:0 20px;
+  margin:0 25px;
+  /* position: fixed; */
 }
 
 .nav-list{
+  border: 1px solid;
   font-size: 30px;
   padding:3px;
+  text-decoration: none;
+}
+
+.nav-list:hover {
+  background-color: aqua;
+}
+
+.number-content-image{
+  display: flex;
+  overflow-x: auto;
+  /* white-space: nowrap; */
+  /* -webkit-overflow-scrolling: touch; */
 }

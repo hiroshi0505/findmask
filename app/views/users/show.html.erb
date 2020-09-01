@@ -1,6 +1,6 @@
 <div class="contents row">
   <div class="scroll">
-    <span><h3><%= @nickname %>さんの投稿一覧</h3></span>
+    <span><h3><%= @nickname %>さんの投稿一覧：1投稿づつ閲覧できます</h3></span>
   </div>
   <%= will_paginate @tweets, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
   <% @tweets.each do |tweet| %>

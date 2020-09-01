@@ -1,26 +1,26 @@
 <div class="contents row">
 <div class="scroll">
-    <span><h2>ログイン</h2></span>
+    <span><h2>全て入力しないとログインできません！</h2></span>
   </div>
   <div class="container">
-    <%# <h2>Log in</h2> %>
+    <h2>Log in ／ ログイン</h2>
     <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-      <div class="field">
+      <div class="field">＜必須＞
         <%= f.label :email %><br />
         <%= f.email_field :email, placeholder: "メールアドレスを入力して下さい", autofocus: true %>
       </div>
 
-      <div class="field">
+      <div class="field">＜必須＞
         <%= f.label :password %><br />
         <%= f.password_field :password, placeholder: "パスワードを入力して下さい", autocomplete: "off" %>
       </div>
 
-      <% if devise_mapping.rememberable? %>
-        <div class="field">
-          <%= f.label :remember_me %><br />
-          <%= f.check_box :remember_me %>
-        </div>
-      <% end -%>
+      <%# <% if devise_mapping.rememberable? %>
+        <%# <div class="field"> %>
+          <%# <% f.label :remember_me %>
+          <%# <% f.check_box :remember_me %>
+        <%# </div> %>
+      <%# <% end %>
 
       <div class="actions">
         <%= f.submit "ログイン" , data: {confirm: "このアカウントでログインしますか？"}%>
