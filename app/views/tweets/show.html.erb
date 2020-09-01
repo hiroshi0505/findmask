@@ -15,8 +15,8 @@
       </div>
       <% if user_signed_in? && current_user.id == @tweet.user_id %>
       <div class="more">
-        <div><%= link_to '＜編集＞', edit_tweet_path(@tweet.id), method: :get, class:"post" %></div>
-        <div><%= link_to '＜削除＞', tweet_path(@tweet.id), method: :delete , class:"post" %></div>
+        <div><%= link_to '＜編集＞', edit_tweet_path(@tweet.id), method: :get, class:"post" , data: {confirm: "編集しますか？"}%></div>
+        <div><%= link_to '＜削除＞', tweet_path(@tweet.id), method: :delete , class:"post" , data: {confirm: "本当に削除しますか？"}%></div>
       </div>
       <% end %>
       <div class="tweet-text">説明文：
