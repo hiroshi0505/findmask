@@ -5,6 +5,7 @@ class TweetsController < ApplicationController
   # includesメソッドを使用するとすべてのレコードを取得するため、allメソッドは省略可能
   def index
     @tweets = Tweet.includes(:user).paginate(page: params[:page], per_page: 3).order('created_at DESC') # ASC（昇順）
+    # @tweets = Tweet.includes(:user).paginate(page: params[:page], per_page: 3) # ASC（昇順）
   end
 
   # Tweetクラスのインスタンス変数を生成します。

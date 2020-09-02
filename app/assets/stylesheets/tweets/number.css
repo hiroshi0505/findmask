@@ -1,6 +1,6 @@
-.logo1 {
-  /* border: 1px solid; */
-}
+/* .logo1 {
+  border: 1px solid;
+} */
 
 .logo2 {
   /* border: 1px solid; */
@@ -9,7 +9,8 @@
 
 .logo3 {
   /* border: 1px solid; */
-  padding: 80px;
+  /* padding: 1px; */
+  width:410px;
 }
 
 .number-contents{
