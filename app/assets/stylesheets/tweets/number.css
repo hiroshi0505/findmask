@@ -1,16 +1,5 @@
-/* .logo1 {
-  border: 1px solid;
-} */
-
-.logo2 {
-  /* border: 1px solid; */
-  padding:40px;
-}
-
-.logo3 {
-  /* border: 1px solid; */
-  /* padding: 1px; */
-  width: 400px;
+.logo {
+  width: 20vw;
 }
 
 .number-contents{
@@ -20,7 +9,7 @@
 
 .number-content{
   border: 1px solid;
-  width: 22%;
+  width: 20vw;
 }
 
 .number-content-text{
@@ -30,6 +19,7 @@
 .nav-lists{
   text-align: center;
   margin:0 auto;
+  width: 20vw;
   /* position: fixed; */
 }
 
