@@ -22,18 +22,20 @@
   border: 1px solid;
   width: 22%;
 }
+
 .number-content-text{
   text-align: center;
 }
 
 .nav-lists{
-  margin:0 25px;
+  text-align: center;
+  margin:0 auto;
   /* position: fixed; */
 }
 
 .nav-list{
   border: 1px solid;
-  font-size: 30px;
+  font-size: 25px;
   padding:3px;
   text-decoration: none;
 }
