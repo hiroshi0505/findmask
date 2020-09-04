@@ -2,6 +2,9 @@
   <div class="scroll">
     <span><h3><%= @nickname %>さんの投稿一覧：1投稿づつ閲覧できます</h3></span>
   </div>
+  <div class="paginate-current">
+    <%= @tweets.current_page %> ／ <%= @tweets.total_pages %>
+  </div>
   <%= will_paginate @tweets, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
   <% @tweets.each do |tweet| %>
     <%= render partial: "tweets/tweet", locals: { tweet: tweet } %>

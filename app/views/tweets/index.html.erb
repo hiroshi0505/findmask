@@ -6,10 +6,17 @@
     <% end %>
   </div>
   <div class="scroll">
-    <span><h3>投稿一覧ページ：３投稿づつ閲覧できます</h3></span>
+    <span><h3>投稿一覧ページ：10投稿づつ閲覧できます</h3></span>
+  </div>
+  <div class="paginate-current">
+    <%= @tweets.current_page %> ／ <%= @tweets.total_pages %>
   </div>
   <%= will_paginate @tweets, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
   <% @tweets.each do |tweet| %>
     <%= render partial: "tweet", locals: { tweet: tweet } %>
   <% end %>
+  <%= will_paginate @tweets, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+  <div class="paginate-current">
+    <%= @tweets.current_page %> ／ <%= @tweets.total_pages %>
+  </div>
 </div>
