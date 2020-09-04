@@ -35,6 +35,5 @@ footer {
 }
 
 .post:hover {
-  /* transform: scale(1.0, 1.7); */
   background-color: aqua;
 }

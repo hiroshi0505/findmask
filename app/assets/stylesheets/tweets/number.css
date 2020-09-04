@@ -3,7 +3,7 @@
 }
 
 .number-contents{
-  display :flex;
+  display: flex;
   justify-content: space-around;
 }
 
@@ -19,14 +19,11 @@
 .nav-lists{
   text-align: center;
   margin: 0;
-  /* width: 20vw; */
-  /* position: fixed; */
 }
 
 .nav-list{
   border: 1px solid;
   font-size: 25px;
-  /* padding:2px; */
   text-decoration: none;
 }
 
@@ -34,9 +31,7 @@
   background-color: aqua;
 }
 
-.number-content-image{
+.number-content-image {
   display: flex;
   overflow-x: auto;
-  /* white-space: nowrap; */
-  /* -webkit-overflow-scrolling: touch; */
 }
