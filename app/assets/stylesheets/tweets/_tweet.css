@@ -38,6 +38,7 @@
   border-radius: 100vh;
   margin: 0 5px;
   padding: 10px 10px;
+  background-color: gold;
 }
 
 .btn1:hover {
