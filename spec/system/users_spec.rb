@@ -1,100 +1,107 @@
 require 'rails_helper'
 
-RSpec.describe "ユーザー管理機能", type: :system do
-  it 'ログインしていない場合、サインインページに移動する' do
-    # トップページに遷移する
-    visit root_path
+RSpec.describe 'ユーザー新規登録', type: :system do
+  before do
+    @user = FactoryBot.build(:user)
+  end
+  context 'ユーザー新規登録ができるとき' do 
+    it '正しい情報を入力すればユーザー新規登録ができてトップページに移動する' do
+      # トップページに移動する
+      visit root_path
+      # トップページにサインアップページへ遷移するボタンがあることを確認する
+      expect(page).to have_content('新規登録')
+      # 新規登録ページへ移動する
+      visit new_user_registration_path
+      # ユーザー情報を入力する
+      fill_in 'user_nickname', with: @user.nickname
+      fill_in 'user_email', with: @user.email
+      fill_in 'user_password', with: @user.password
+      fill_in 'user_password_confirmation', with: @user.password_confirmation
+      # サインアップボタンを押すとユーザーモデルのカウントが1上がることを確認する
+      expect{
+        find('input[name="commit"]').click
+      }.to change { User.count }.by(1)
 
-    # ログインしていない場合、サインインページに遷移していることを確認する
-    # expect(current_path).to eq "/users/sign_in"
+      # find('input[name="commit"]').click
+      # expect{(page.driver.browser.switch_to.alert.text).to eq "この内容で登録しますか？"
+      #        page.driver.browser.switch_to.alert.accept
+      # }.to change { User.count }.by(1)
+
+      # トップページへ遷移することを確認する
+      expect(current_path).to eq root_path
+      # カーソルを合わせるとログアウトボタンが表示されることを確認する
+      expect(page).to have_content('ログアウト')
+      expect(page).to have_content('投稿する')
+      # サインアップページへ遷移するボタンやログインページへ遷移するボタンが表示されていないことを確認する
+      expect(page).to have_no_content('新規登録')
+      expect(page).to have_no_content('ログイン')
+    end
+  end
+  context 'ユーザー新規登録ができないとき' do
+    it '誤った情報ではユーザー新規登録ができずに新規登録ページへ戻ってくる' do
+      # トップページに移動する
+      visit root_path
+      # トップページにサインアップページへ遷移するボタンがあることを確認する
+      expect(page).to have_content('新規登録')
+      # 新規登録ページへ移動する
+      visit new_user_registration_path
+      # ユーザー情報を入力する
+      fill_in 'user_nickname', with: ""
+      fill_in 'user_email', with: ""
+      fill_in 'user_password', with: ""
+      fill_in 'user_password_confirmation', with: ""
+      # サインアップボタンを押してもユーザーモデルのカウントは上がらないことを確認する
+      expect{
+        find('input[name="commit"]').click
+      }.to change { User.count }.by(0)
+      # 新規登録ページへ戻されることを確認する
+      expect(current_path).to eq "/users"
+    end
+  end
+end
+
+RSpec.describe 'ユーザーログイン', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+  end
+  context 'ログインができるとき' do
+    it '保存されているユーザーの情報と合致すればログインができる' do
+      # トップページに移動する
+      visit root_path
+      # トップページにログインページへ遷移するボタンがあることを確認する
+      expect(page).to have_content('ログイン')
+      # ログインページへ遷移する
+      visit new_user_session_path
+      # 正しいユーザー情報を入力する
+      fill_in 'Email', with: @user.email
+      fill_in 'Password', with: @user.password
+      # ログインボタンを押す
+      find('input[name="commit"]').click
+      # トップページへ遷移することを確認する
+      expect(current_path).to eq root_path
+      # カーソルを合わせるとログアウトボタンが表示されることを確認する
+      expect(page).to have_content('ログアウト')
+      expect(page).to have_content('投稿する')
+      # サインアップページへ遷移するボタンやログインページへ遷移するボタンが表示されていないことを確認する
+      expect(page).to have_no_content('新規登録')
+      expect(page).to have_no_content('ログイン')
+    end
+  end
+  context 'ログインができないとき' do
+    it '保存されているユーザーの情報と合致しないとログインができない' do
+      # トップページに移動する
+      visit root_path
+      # トップページにログインページへ遷移するボタンがあることを確認する
+      expect(page).to have_content('ログイン')
+      # ログインページへ遷移する
+      visit new_user_session_path
+      # ユーザー情報を入力する
+      fill_in 'Email', with: ""
+      fill_in 'Password', with: ""
+      # ログインボタンを押す
+      find('input[name="commit"]').click
+      # ログインページへ戻されることを確認する
       expect(current_path).to eq new_user_session_path
-  end
-
-  it '新規登録に成功し、トップページに遷移する' do
-    # サインインページへ移動する
-    visit  new_user_session_path
-
-    # ログインしていない場合、サインインページに遷移していることを確認する
-    expect(current_path).to eq new_user_session_path
-
-    # 新規登録ボタンをクリックする
-    click_on("新規登録")
-
-    # すでに保存されているユーザーのemailとpasswordを入力する
-    fill_in 'user_nickname', with: "aaa"
-    fill_in 'user_email', with: "a@a"
-    fill_in 'user_password', with: "a1500095"
-    fill_in 'user_password_confirmation', with: "a1500095"
-
-    # ログインボタンをクリックする
-    click_on("Sign up")
-
-    # トップページに遷移していることを確認する
-    expect(current_path).to eq root_path
-  end
-
-  it '新規登録に失敗し、再び新規登録ページに遷移する' do
-    # サインインページへ移動する
-    visit  new_user_session_path
-
-    # ログインしていない場合、サインインページに遷移していることを確認する
-    expect(current_path).to eq new_user_session_path
-
-    # 新規登録ボタンをクリックする
-    click_on("新規登録")
-
-    # すでに保存されているユーザーのemailとpasswordを入力する
-    fill_in 'user_nickname', with: "aaa"
-    fill_in 'user_email', with: "a@a"
-    fill_in 'user_password', with: "a1500095"
-    fill_in 'user_password_confirmation', with: "test"
-
-    # ログインボタンをクリックする
-    click_on("Sign up")
-
-    # 新規登録ページに戻ってきていることを確認する
-    expect(current_path).to eq "/users"
-  end
-
-  it 'ログインに成功し、トップページに遷移する' do
-    # 予め、ユーザーをDBに保存する
-    @user = FactoryBot.create(:user)
-
-    # サインインページへ移動する
-    visit  new_user_session_path
-
-    # ログインしていない場合、サインインページに遷移していることを確認する
-    expect(current_path).to eq new_user_session_path
-
-    # すでに保存されているユーザーのemailとpasswordを入力する
-    fill_in 'user_email', with: @user.email
-    fill_in 'user_password', with: @user.password
-
-    # ログインボタンをクリックする
-    click_on("Log in")
-
-    # トップページに遷移していることを確認する
-    expect(current_path).to eq root_path
-  end
-  
-  it 'ログインに失敗し、再びサインインページに遷移する' do
-    # 予め、ユーザーをDBに保存する
-    @user = FactoryBot.create(:user)
-
-    # トップページに遷移させる
-    visit  root_path
-
-    # ログインしていない場合、サインインページに遷移していることを確認する
-    expect(current_path).to eq new_user_session_path
-
-    # 誤ったユーザー情報を入力する
-    fill_in 'user_email', with: "test"
-    fill_in 'user_password', with: "test"
-
-    # ログインボタンをクリックする
-    click_on("Log in")
-
-    # サインインページに戻ってきていることを確認する
-    expect(current_path).to eq  new_user_session_path
+    end
   end
 end
