@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Tweet, type: :model do
-  before do
-    @tweet = FactoryBot.build(:tweet)
-    @tweet.image = fixture_file_upload('public/images/test_image.png')
-  end
+  describe '#create' do
+    before do
+      @tweet = FactoryBot.build(:tweet)
+      @tweet.image = fixture_file_upload('public/images/test_image.png')
+    end
 
-  describe '投稿の保存' do
     context "投稿が保存できる場合" do
       it "textとimageがあれば投稿は保存される" do
         expect(@tweet).to be_valid
