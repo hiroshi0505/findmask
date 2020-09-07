@@ -16,7 +16,7 @@ RSpec.describe "投稿機能", type: :system do
     it 'textとimageを空で送信をした場合、投稿に失敗する' do
       # サインインする
       sign_in(@user)
-      # 投稿ページへ遷移する
+      # 投稿するをクリックする
       click_on('投稿する')
       # SENDをクリックする
       click_on("SEND")
@@ -24,16 +24,17 @@ RSpec.describe "投稿機能", type: :system do
       expect(page.driver.browser.switch_to.alert.text).to eq "内容に間違いはございませんか？"
       # okをおす
       page.driver.browser.switch_to.alert.accept
+      # 投稿ページへ移動する
       visit new_tweet_path
+      # 現在のページが投稿ページであることを確認する
+      expect(current_path).to eq "/tweets/new"
       # 送信した値がDBに保存されていないことを確認する
       not change { Tweet.count }
-      # 現在のページが投稿ページであることを確認する
-      expect(current_path).to eq "/tweets"
     end
     it 'textを入力するがimageが空の為、投稿に失敗する' do
       # サインインする
       sign_in(@user)
-      # 投稿ページへ遷移する
+      # 投稿するをクリックする
       click_on('投稿する')
       # テキストフォームに「テスト」と入力する
       post = "テスト"
@@ -44,16 +45,17 @@ RSpec.describe "投稿機能", type: :system do
       expect(page.driver.browser.switch_to.alert.text).to eq "内容に間違いはございませんか？"
       # okをおす
       page.driver.browser.switch_to.alert.accept
+      # 投稿ページへ移動する
       visit new_tweet_path
+      # 現在のページが投稿ページであることを確認する
+      expect(current_path).to eq "/tweets/new"
       # 送信した値がDBに保存されていないことを確認する
       not change { Tweet.count }
-      # 現在のページが投稿ページであることを確認する
-      expect(current_path).to eq "/tweets"
     end
     it 'imageを入力するがtextが空の為、投稿に失敗する' do
       # サインインする
       sign_in(@user)
-      # 投稿ページへ遷移する
+      # 投稿するをクリックする
       click_on('投稿する')
       # 添付する画像を定義する
       image_path = Rails.root.join('public/images/test_image.png')
@@ -65,18 +67,19 @@ RSpec.describe "投稿機能", type: :system do
       expect(page.driver.browser.switch_to.alert.text).to eq "内容に間違いはございませんか？"
       # okをおす
       page.driver.browser.switch_to.alert.accept
+      # 投稿ページへ移動する
       visit new_tweet_path
+      # 現在のページが投稿ページであることを確認する
+      expect(current_path).to eq "/tweets/new"
       # 送信した値がDBに保存されていないことを確認する
       not change { Tweet.count }
-      # 現在のページが投稿ページであることを確認する
-      expect(current_path).to eq "/tweets"
     end
   end
   context '投稿に成功する' do
     it 'imageとtextの両方を送信すると投稿に成功する' do
       # サインインする
       sign_in(@user)
-      # 投稿ページへ遷移する
+      # 投稿するをクリックする
       click_on('投稿する')
       # 添付する画像を定義する
       image_path = Rails.root.join('public/images/test_image.png')
@@ -91,11 +94,12 @@ RSpec.describe "投稿機能", type: :system do
       expect(page.driver.browser.switch_to.alert.text).to eq "内容に間違いはございませんか？"
       # okをおす
       page.driver.browser.switch_to.alert.accept
+      # 投稿一覧ページへ移動する
       visit tweets_path
-      # SENDをクリックし、送信した値がDBに保存されていないことを確認する
-      change { Tweet.count }.by(1)
       # 投稿一覧画面に遷移していることを確認する
-      expect(current_path).to eq tweets_path
+      expect(current_path).to eq "/tweets"
+      # 送信した値がDBに保存されていないことを確認する
+      change { Tweet.count }.by(1)
       # 送信した画像がブラウザに表示されていることを確認する
       expect(page).to have_selector("img")
       # 送信したtextがブラウザに表示されていることを確認する
@@ -104,44 +108,51 @@ RSpec.describe "投稿機能", type: :system do
   end
 end
 
-RSpec.describe "投稿機能", type: :system do
+RSpec.describe "編集/削除機能", type: :system do
   before do
     @tweet = FactoryBot.create(:tweet)
   end
-  it 'imageとtextの両方を送信すると投稿に成功し、投稿した画像を編集・削除できる' do
+  it '投稿した画像を編集・削除できる' do
+    # ログインページへ移動する
     visit new_user_session_path
+    # emailとpasswordを入力する（同時に投稿が完了している）
     fill_in "user[email]", with: @tweet.user.email
     fill_in "user[password]", with: @tweet.user.password
     find('input[name="commit"]').click
+    # 現在のページがroot_pathであることを確認する
     expect(current_path).to eq root_path
+    # マイページボタンをクリックする
     click_on('マイページ')
-    # 編集ページへ遷移する
+    # 編集ボタンをクリックする
     click_on('＜編集＞')
     # アラートが出ることを確認する
     expect(page.driver.browser.switch_to.alert.text).to eq "編集しますか？"
     # okをおす
     page.driver.browser.switch_to.alert.accept
-    visit edit_tweet_path
+    # 編集ページへ移動する
+    visit "/tweets/#{@tweet.id}/edit"
     # SENDをクリックする
     click_on('SEND')
     # アラートが出ることを確認する
     expect(page.driver.browser.switch_to.alert.text).to eq "内容に間違いはございませんか？"
     # okをおす
     page.driver.browser.switch_to.alert.accept
+    # 詳細ページへ移動する
     visit "/tweets/#{@tweet.id}"
+    # 現在のページが詳細ページであることを確認する
+    expect(current_path).to eq "/tweets/#{@tweet.id}"
     # 送信した値がDBに上書きされていることを確認する
     not change { Tweet.count }
-    # 現在のページが投稿一覧ページであることを確認する
-    expect(current_path).to eq "/tweets/#{@tweet.id}"
-    # 投稿を削除する
+    # 削除ボタンをクリックする
     click_on('＜削除＞')
     # アラートが出ることを確認する
     expect(page.driver.browser.switch_to.alert.text).to eq "本当に削除しますか？"
     # okをおす
     page.driver.browser.switch_to.alert.accept
-    visit "/tweets"
     # ユーザーモデルのカウントが1下がることを確認する
     change { Tweet.count }.by(-1)
+    # 投稿一覧ページへ移動する
+    visit "/tweets"
     # 現在のページが投稿一覧ページであることを確認する
     expect(current_path).to eq "/tweets"
   end
