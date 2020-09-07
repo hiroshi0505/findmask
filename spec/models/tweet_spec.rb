@@ -4,7 +4,6 @@ RSpec.describe Tweet, type: :model do
   describe '#create' do
     before do
       @tweet = FactoryBot.build(:tweet)
-      @tweet.image = fixture_file_upload('public/images/test_image.png')
     end
 
     context "投稿が保存できる場合" do
