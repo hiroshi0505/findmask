@@ -23,10 +23,10 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       expect(page.driver.browser.switch_to.alert.text).to eq "この内容で登録しますか？"
       # okをおす
       page.driver.browser.switch_to.alert.accept
-      # ユーザーモデルのカウントが1上がることを確認する
-      change { User.count }.by(1)
       # 現在のページがルートパスであることを確認する
       expect(current_path).to eq root_path
+      # ユーザーモデルのカウントが1上がることを確認する
+      change { User.count }.by(1)
       # ページ内に「ログアウト」と「投稿する」ボタンがあることを確認する
       expect(page).to have_content('ログアウト')
       expect(page).to have_content('投稿する')
@@ -54,6 +54,8 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       expect(page.driver.browser.switch_to.alert.text).to eq "この内容で登録しますか？"
       # okをおす
       page.driver.browser.switch_to.alert.accept
+      # ページ内にエラー文が表示されることを確認する
+      expect(page).to have_content('this user from being saved:')
       # ユーザーモデルのカウントは変わらないことを確認する
       not change { User.count }
       # 現在のページが新規登録ページであることを確認する
