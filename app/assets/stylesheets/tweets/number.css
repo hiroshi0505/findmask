@@ -34,4 +34,47 @@
 .number-content-image {
   display: flex;
   overflow-x: auto;
+  border: 1px solid;
 }
+/* スライドショー設定 */
+.slide {
+  position   : relative;
+  overflow   : hidden;
+                    /* 画像のサイズに合わせて変更ください */
+  width      : 10vw;
+  height     : 10vw;
+  margin     : auto;      /* サンプルは中央寄せの背景：白 */
+  background : #fff;
+}
+ 
+ /*=== 画像の設定 ======================================= */
+.slide img {
+  display    : block;
+  position   : absolute;
+                      /* 画像のサイズを表示エリアに合せる */
+  width      : inherit;
+  height     : inherit;
+  left       : 100%;
+  animation  : slideAnime 20s ease-in-out infinite;
+}
+ 
+ /*=== スライドのアニメーションを段差で開始する ========= */
+ .slide img:nth-of-type(1) { animation-delay: 0s }
+ .slide img:nth-of-type(2) { animation-delay: 2s }
+ .slide img:nth-of-type(3) { animation-delay: 4s }
+ .slide img:nth-of-type(4) { animation-delay: 6s }
+ .slide img:nth-of-type(5) { animation-delay: 8s }
+ .slide img:nth-of-type(6) { animation-delay: 10s }
+ .slide img:nth-of-type(7) { animation-delay: 12s }
+ .slide img:nth-of-type(8) { animation-delay: 14s }
+ .slide img:nth-of-type(9) { animation-delay: 16s }
+ .slide img:nth-of-type(10) { animation-delay: 18s }
+
+  /*=== スライドのアニメーション ========================= */
+  @keyframes slideAnime{
+      0% { left: 100%  }
+     10% { left: 0     }
+     10% { left: 0     }
+     20% { left: -100% }
+    100% { left: -100% }
+  }
