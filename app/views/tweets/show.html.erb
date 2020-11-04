@@ -13,6 +13,8 @@
       <div class="tweet-image">
         <%= image_tag @tweet.image.variant(resize:'500x500') if @tweet.image.attached? %>
       </div>
+
+      
       <% if user_signed_in? && current_user.id == @tweet.user_id %>
       <div class="more">
         <div><%= link_to '＜編集＞', edit_tweet_path(@tweet.id), method: :get, class:"post" , data: {confirm: "編集しますか？"}%></div>
@@ -25,6 +27,21 @@
       <div class="name">投稿者：
         <a href="/users/<%= @tweet.user.id %>" class="btn1"><%= @tweet.user.nickname %>さん</a>
       </div>
+      
+      <%# いいね機能 %>
+      <div class="likes">
+        <% if Like.find_by(user_id: current_user.id, tweet_id: @tweet.id) %>
+          <%= link_to("/likes/#{@tweet.id}/destroy", {method: "post"}) do %>
+            <span class="fa fa-heart like-btn-unlike">いいね！</span>
+          <% end %>
+        <% else %>
+          <%= link_to("/likes/#{@tweet.id}/create", {method: "post"}) do %>
+            <span class="fa fa-heart like-btn">いいね！</span>
+          <% end %>
+        <% end %>
+        <%= @likes_count %>
+      </div>
+      
     </div>
     <div class="show-content-right">
       <% if current_user %>

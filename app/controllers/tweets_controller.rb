@@ -40,6 +40,8 @@ class TweetsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @tweet.comments.includes(:user)
+    @tweet = Tweet.find_by(id: params[:id])
+    @likes_count = Like.where(tweet_id: @tweet.id).count
   end
 
   def search
