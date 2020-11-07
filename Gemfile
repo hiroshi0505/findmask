@@ -67,3 +67,4 @@ gem 'image_processing', '~> 1.2'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem "aws-sdk-s3", require: false
+gem "gretel"
