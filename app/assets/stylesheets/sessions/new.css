@@ -21,3 +21,20 @@ input {
   margin: 10px;
   background-color:gray;
 }
+
+/* タブレット表示時 */
+@media (max-width: 1024px) {
+  .container {
+    width: 100vw;
+    border: 1px solid;
+    text-align: center;
+  }
+  input{
+    width: 70vw;
+  }
+ }
+
+ /* スマホ表示時 */
+@media (max-width: 599px) {
+  
+ }
