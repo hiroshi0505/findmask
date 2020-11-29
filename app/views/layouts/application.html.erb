@@ -16,20 +16,22 @@
 
   <body>
     <header>
-      <div class="header-left-1">
+      <div class="header-">
         <%= link_to "投稿一覧ページ", tweets_path, class: "post" %>
-        <%= link_to "学習ページへ", number_tweets_path, class: "post" %>
+        <%= link_to "学習ページ", number_tweets_path, class: "post" %>
       </div>
       <% if user_signed_in? %>
-        <div class="header-right-1">
-          こんにちは<%= current_user.nickname %>さん
+        こんにちは<%= current_user.nickname %>さん
+        <div class="header-">
           <%= link_to "マイページ", "/users/#{current_user.id}", class: "post"%>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "post" %>
           <%= link_to "投稿する", new_tweet_path, class: "post" %>
         </div>
       <% else %>
-        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "post" %>
-        <div class="header-right-2">
+        <div class="header-">
+          <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "post" %>
+        </div>
+        <div class="header-">
           <%= link_to "ログイン", new_user_session_path, class: "post" %>
           <%= link_to "新規登録", new_user_registration_path, class: "post" %>
         </div>

@@ -37,3 +37,30 @@ footer {
 .post:hover {
   background-color: aqua;
 }
+
+/* タブレット表示時 */
+@media (max-width: 1024px) {
+  header{
+    display: flex;
+    height: auto;
+  }
+  
+  .header-{
+    display: flex;
+    flex-direction: column;
+  }
+ }
+
+ /* スマホ表示時 */
+@media (max-width: 599px) {
+  header{
+    display: block;
+    height: auto;
+    text-align: center;
+  }
+  
+  .header-{
+    display: flex;
+    flex-direction: column;
+  }
+ }
