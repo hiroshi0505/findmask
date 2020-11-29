@@ -78,3 +78,32 @@
      20% { left: -100% }
     100% { left: -100% }
   }
+
+/* タブレット表示時 */
+@media (max-width: 1024px) {
+  .number-contents{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .number-content{
+    border: 1px solid;
+    width: 100vw;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    width: 100vw;
+  }
+
+  .slide {
+    width      : 30vw;
+    height     : 30vw;
+    margin     : auto;      /* 中央寄せ */
+  }
+ }
+
+ /* スマホ表示時 */
+@media (max-width: 599px) {
+  
+ }
