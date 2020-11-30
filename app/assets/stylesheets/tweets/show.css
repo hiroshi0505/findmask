@@ -82,6 +82,10 @@ textarea {
   background-color: aqua;
 }
 
+h3{
+  text-align: center;
+}
+
 .like-btn {
   color: #8899a6;
 }
