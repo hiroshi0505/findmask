@@ -4,6 +4,6 @@ window.addEventListener("load", function(){
   const btn = document.getElementById("btn");
   // btn要素がクリックされた時に、アラートが出るというイベントが発生
   btn.addEventListener("click", function(){    
-    alert("入力して下さい");
+    alert("コメントを入力して下さい");
   });
 });

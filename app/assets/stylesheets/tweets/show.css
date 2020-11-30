@@ -96,3 +96,40 @@ textarea {
   padding: 5px 5px;
   margin-right: 5px;
 }
+
+/* タブレット表示時 */
+@media (max-width: 1024px) {
+  .show-contents{
+    flex-direction: column;
+  }
+  h3{
+    text-align: center;
+  }
+  .text{
+    width: 100vw;
+  }
+  .dammy{
+    width: 100vw;
+  }
+  .submit{
+    width: 100vw;
+  }
+}
+
+/* スマホ表示時 */
+@media (max-width: 599px) {
+  img{
+    width: 100vw;
+  }
+  h3{
+    text-align: center;
+  }
+  .dammy{
+    height: 50px;
+    padding: 0;
+  }
+  .submit{
+    height: 50px;
+    padding: 0;
+  }
+}

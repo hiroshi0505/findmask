@@ -34,3 +34,32 @@
   width: 30vw;
   height: auto;
 }
+
+/* タブレット表示時 */
+@media (max-width: 1024px) {
+  .form{
+    width: 100vw;
+  }
+  .image-form{
+    width: 80vw;
+  }
+  .text-area{
+    width: 80vw;
+  }
+  #image-list img{
+    width: 50vw;
+  }
+}
+
+/* スマホ表示時 */
+@media (max-width: 599px) {
+  .image-form{
+    width: 90vw;
+  }
+  .text-area{
+    width: 90vw;
+  }
+  #image-list img{
+    width: 80vw;
+  }
+}
