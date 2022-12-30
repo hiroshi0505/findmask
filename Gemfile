@@ -66,4 +66,4 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem "aws-sdk-s3", require: false
 gem "gretel"
-gem 'mimemagic'
+gem 'mimemagic', '~> 0.4.3'
